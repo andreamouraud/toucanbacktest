@@ -1,7 +1,7 @@
 import json
 
 from queries.Query import generate_id
-from queries.controller import create
+from queries.controller import create, delete
 
 
 def test_queries(client):
@@ -43,4 +43,7 @@ def test_query(client):
     data = json.loads(str(res.data, encoding='utf-8'))
     assert isinstance(data, dict)
     assert data['domain'] == 'test'
+
+    # Delete new query
+    delete(qid)
 
